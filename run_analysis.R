@@ -99,4 +99,4 @@ tidy.data2.v1$activityName.subjectIndex<-rownames(tidy.data2.v1)
 tidy.data2.v2<-tidy.data2.v1[,c(67,1:66)]
 
 ##exporting the final tidy data set
-write.table(tidy.data2.v2,"tidy_data_set2.txt")
+write.table(tidy.data2.v2,"tidy_data_set2.txt",row.names=FALSE)
