@@ -21,7 +21,7 @@ sub.test<-read.table("test/subject_test.txt",header=FALSE)
 features<-read.table("features.txt",header=FALSE,stringsAsFactors=FALSE)
 
 ##--------------------------------------------------------------------------------
-##step 1:merging test and training datasets into one set--------------------------
+##merging test and training datasets into one set--------------------------
 ##--------------------------------------------------------------------------------
 test<-cbind(x.test,y.test,sub.test) ##including activity & subject index
 train<-cbind(x.train,y.train,sub.train) ##including activity & subject index
@@ -31,7 +31,7 @@ test.and.train<-rbind(test,train)
 colnames(test.and.train)[562:563]<-c("activityIndex","subjectIndex") 
 
 ##--------------------------------------------------------------------------------
-##step 2:extracting only columns with mean and standard deviation-----------------
+##extracting only columns with mean and standard deviation-----------------
 ##--------------------------------------------------------------------------------
 
 ##--------------------------------------------------------------------------------
@@ -56,7 +56,7 @@ features.index<-which(features.name.split.cleaned$measurementMade %in% c("mean()
 test.and.train.tidy.v1<-test.and.train[,c(features.index,562,563)]
 
 ##--------------------------------------------------------------------------------
-##step 3:getting the descriptive activity names-----------------------------------
+##getting the descriptive activity names-----------------------------------
 ##--------------------------------------------------------------------------------
 descriptive.Activity.Names<-read.table("activity_labels.txt",header=FALSE,col.names=c("activityIndex","activityName"))
 
@@ -64,7 +64,7 @@ test.and.train.tidy.v2<-merge(x=test.and.train.tidy.v1,y=descriptive.Activity.Na
                               by.x="activityIndex",by.y="activityIndex",all.x=TRUE)
 
 ##--------------------------------------------------------------------------------
-##step 4:giving the column names for tidy data set--------------------------------
+##giving the column names for tidy data set--------------------------------
 ##--------------------------------------------------------------------------------
 
 name.part1<-features.name.split.cleaned$metricMeasured[features.index]
@@ -98,7 +98,7 @@ feature.names.v13<-gsub("BodyGyroscopeJerk","BodyAngularVelocity",feature.names.
 colnames(test.and.train.tidy.v2)[2:(length(feature.names.v13)+1)]<-feature.names.v13
 
 ##--------------------------------------------------------------------------------
-##step 5:creating a second tidy data set with average of each measurement for each
+##creating a second tidy data set with average of each measurement for each
 ##--------variable and each subject-----------------------------------------------
 ##--------------------------------------------------------------------------------
 
@@ -114,7 +114,7 @@ tidy.data2.v1<-as.data.frame(t(tidy.data2))
 ##updating the colnames to reflect they have the mean for each subject and activity
 colnames(tidy.data2.v1)<-paste0("average",colnames(tidy.data2.v1),sep="")
 
-##creating a new column from the rownames
+##creating new column from the rownames
 tidy.data2.v1$activityName<-unlist(strsplit(rownames(tidy.data2.v1),"\\."))[seq(from=1,to=length(rownames(tidy.data2.v1))*2,by=2)]
 tidy.data2.v1$SubjectIndex<-unlist(strsplit(rownames(tidy.data2.v1),"\\."))[seq(from=2,to=length(rownames(tidy.data2.v1))*2,by=2)]
 
