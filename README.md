@@ -2,8 +2,9 @@
 ============================================================================================
 
 The R script can be split into 7 parts based on the activity being done:
-1. Setting Working directory and reading the required files
-2. Merging the test and train data sets
+
+1.	Setting Working directory and reading the required files
+2.	Merging the test and train data sets
 3. Extracting only measurements of mean and standard deviation
 4. Naming the activities descriptively
 5. Naming the variables of dataset descriptively
