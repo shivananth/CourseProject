@@ -100,14 +100,14 @@ BodyGyroscopeJerk	| BodyAngularVelocity
 #### Part 6: Creating a final dataset with average of all variables for each subject and each activity
 
 ##### Line No: 105 to 125
-Computes the average of all measurements in test.and.train.tidy.v2 for each subjectIndex and activityName
+* Computes the average of all measurements in test.and.train.tidy.v2 for each subjectIndex and activityName
 
-Transposes the result of lapply, as column and row names were in transpose form of what we need
+* Transposes the result of lapply, as column and row names were in transpose form of what we need
 
-Adds the word "average" as prefix to all the column names to amke it more descriptive
+* Adds the word "average" as prefix to all the column names to amke it more descriptive
 
-Creates 2 new variables activityName and subjectIndex which have become rownames in the tidy data set created after lapply & tranpose
+* Creates 2 new variables activityName and subjectIndex which have become rownames in the tidy data set created after lapply & tranpose
 
-Orders the dataset columns with the activityName and subjectIndex in the beginning followed by averages of the mesurements
+* Orders the dataset columns with the activityName and subjectIndex in the beginning followed by averages of the mesurements
 
-Exports the final data set tidy.data2.v2
+* Exports the final data set tidy.data2.v2
